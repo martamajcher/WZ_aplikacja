@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Moje_wz
+
+
+@admin.register(Moje_wz)
+class Moje_wzAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}

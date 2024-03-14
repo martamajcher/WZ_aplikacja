@@ -1,0 +1,32 @@
+{% extends "./base.html" %}
+{% block content %}
+    <style>
+    #hiddenDiv {
+        display: none;
+    }
+    </style>
+    <main>
+        <section class="card text-black bg-white shadow-sm p-2 align-items-center">
+            {{ wz.question }}
+        </section>
+        <section id="answerButton" class="text-center">
+            <button id="showButton" class="btn btn-info btn-lg p-3">Answer</button>
+        </section>
+        <div id="hiddenDiv">
+            <section class="card text-black bg-success shadow-sm p-2 align-items-center">
+                {{ wz.answer }}
+            </section>
+            <a type="button"
+               class="btn btn-info shadow-sm"
+               href="{{ next_wz_url }}">Next</a>
+        </div>
+        <script>
+        document.getElementById('showButton').addEventListener('click', function() {
+        var hiddenDiv = document.getElementById('hiddenDiv');
+        hiddenDiv.style.display = (hiddenDiv.style.display === 'block') ? 'none' : 'block';
+        var showButton = document.getElementById('showButton');
+        showButton.innerText = (hiddenDiv.style.display === 'none') ? 'Answer' : 'Hide';
+        });
+        </script>
+    </main>
+{% endblock %}

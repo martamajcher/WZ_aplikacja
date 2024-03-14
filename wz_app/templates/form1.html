@@ -1,0 +1,14 @@
+<form method="POST">
+    <input type="text" name="first-name">
+    <input type="text" name="last-name">
+    <button type="submit">SEND</button>
+    {% csrf_token %}
+
+</form>
+
+
+{% if first_name %}
+<h1>Servus {{ first_name }}</h1>
+<h1>Seriously your name is  {{ last_name }}</h1>
+
+{% endif %}

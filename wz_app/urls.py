@@ -15,10 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
-
+from django.urls import path
+from .views import hello_view,wz_list,wz_learn,form1,form2
 
 urlpatterns = [
-    path('',include("wz_app.urls")),
-    path('admin/', admin.site.urls),
+    path('',hello_view),
+    path('wz',wz_list,name="wz-collection"),
+    path('wz/learn/<slug:slug>',wz_learn, name="wz-learn"),
+    path('wz/form1',form1, name="form1"),
+    path('wz/form2',form2,name="form2")
 ]
+
+from django.urls import path
+from . import views
+
