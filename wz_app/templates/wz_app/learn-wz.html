@@ -1,0 +1,20 @@
+{% extends "./base.html" %}
+{% block content %}
+    <style>
+    #hiddenDiv {
+        display: none;
+    }
+    </style>
+    <main>
+        <section class="card text-black bg-white shadow-sm p-2 align-items-center">
+            {{ w.Odbiorca }}
+        </section>
+
+        <div id="hiddenDiv">
+            <section class="card text-black bg-success shadow-sm p-2 align-items-center">
+                {{ w.Numer_samochodu }}
+            </section>
+
+        </div>
+    </main>
+{% endblock %}

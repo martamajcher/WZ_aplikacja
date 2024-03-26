@@ -1,0 +1,26 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="text-center">
+        {% if request.GET.logout %}
+            <h4 class="text-successs text-center"> logged out successfully </h4>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+        <h2>Go and explore your collection now, {{ request.user.username }} :)</h2>
+            <br>
+             <div>
+
+                <a class="btn btn-alert navbar-btn btn-lg bg-primary bg-gradient text-white m-1"
+                   type="button"
+                   href="{% url 'wz-collection' %}">My Collection</a>
+            </div>
+
+        {% else %}
+        <h1> Welcome in WZ app!!!</h1>
+        <hr>
+        <i class="fa-solid fa-solid fa-folder-open fa-5x"></i>
+        <h2> Please log in to explore wonderful world :)</h2>
+        {% endif%}
+    </main>
+{% endblock %}

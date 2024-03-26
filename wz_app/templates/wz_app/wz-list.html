@@ -1,0 +1,34 @@
+{% extends "./base.html" %}
+{% block content %}
+    <main class="text-center">
+        <h1>Your wz</h1>
+        <hr>
+        <section>
+            <ul>
+                {% for w in wz %}
+                    <li>
+                        <div class="card text-white bg-info bg-gradient">
+
+
+                            <a class="card-title m-1" href="{% url 'learn-wz' w.slug %}?odbiorca={{ w.Odbiorca|urlencode }}&numer_samochodu={{ w.Numer_samochodu|urlencode }}&data_dokumentu={{ w.Data_dokumentu }}">
+    {{ w.Data_dokumentu }}
+</a>
+
+
+                            <form id="delete {{ w.slug }}"
+                                  class="btn btn-alert navbar-btn bg-primary"
+                                  method="POST">
+                                <input type="hidden" name="slug" value="{{ w.slug }}">
+                                <i class="fa-solid fa-xmark"
+                                   style="color: red"
+                                   type="button"
+                                   onclick="document.getElementById('delete {{ w.slug }}').submit()"></i>
+                                {% csrf_token %}
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+{% endblock %}
